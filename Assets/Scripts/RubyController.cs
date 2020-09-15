@@ -1,57 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    public float speed = 3.0f;
-    public float timeInvincible = 2.0f;
-    public int maxHP = 5;
-    public int health {get { return currentHP; }}
-
-    public GameObject HitEffect; 
-    int currentHP; 
-
-    bool isInvincible;
-    float invincibleTimer;
-
-    Rigidbody2D rigidbody2d;
-    float horizontal; 
-    float vertical;
-
-    Animator animator;
-    Vector2 lookDirection = new Vector2(1,0);
-
-    public GameObject projectilePrefab;
+    // ========= MOVEMENT =================
+    public float speed = 4;
     
-    // Start is called before the first frame update
+    // ======== HEALTH ==========
+    public int maxHealth = 5;
+    public float timeInvincible = 2.0f;
+    public Transform respawnPosition;
+    public ParticleSystem hitParticle;
+    
+    // ======== PROJECTILE ==========
+    public GameObject projectilePrefab;
+
+    // ======== AUDIO ==========
+    public AudioClip hitSound;
+    public AudioClip shootingSound;
+    
+    // ======== HEALTH ==========
+    public int health
+    {
+        get { return currentHealth; }
+    }
+    
+    // =========== MOVEMENT ==============
+    Rigidbody2D rigidbody2d;
+    Vector2 currentInput;
+    
+    // ======== HEALTH ==========
+    int currentHealth;
+    float invincibleTimer;
+    bool isInvincible;
+   
+    // ==== ANIMATION =====
+    Animator animator;
+    Vector2 lookDirection = new Vector2(1, 0);
+    
+    // ================= SOUNDS =======================
+    AudioSource audioSource;
+    
     void Start()
     {
-        animator = GetComponent<Animator>();
-
+        // =========== MOVEMENT ==============
         rigidbody2d = GetComponent<Rigidbody2D>();
-
-        currentHP = maxHP;
+                
+        // ======== HEALTH ==========
+        invincibleTimer = -1.0f;
+        currentHealth = maxHealth;
+        
+        // ==== ANIMATION =====
+        animator = GetComponent<Animator>();
+        
+        // ==== AUDIO =====
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        
-        Vector2 move = new Vector2(horizontal, vertical);
-        
-        if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
-        {
-            lookDirection.Set(move.x, move.y);
-            lookDirection.Normalize();
-        }
-        
-        animator.SetFloat("Look X", lookDirection.x);
-        animator.SetFloat("Look Y", lookDirection.y);
-        animator.SetFloat("Speed", move.magnitude);
-        
+        // ================= HEALTH ====================
         if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;
@@ -59,47 +67,105 @@ public class RubyController : MonoBehaviour
                 isInvincible = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.C))
+        // ============== MOVEMENT ======================
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+                
+        Vector2 move = new Vector2(horizontal, vertical);
+        
+        if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
-            Launch();
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
         }
+
+        currentInput = move;
+
+
+        // ============== ANIMATION =======================
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
+
+        // ============== PROJECTILE ======================
+
+        if (Input.GetKeyDown(KeyCode.C))
+            LaunchProjectile();
+        
+        // ======== DIALOGUE ==========
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, 1 << LayerMask.NameToLayer("NPC"));
+            if (hit.collider != null)
+            {
+                NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+                if (character != null)
+                {
+                    character.DisplayDialog();
+                }  
+            }
+        }
+ 
     }
-    
+
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
-        position.x = position.x + speed * horizontal * Time.deltaTime;
-        position.y = position.y + speed * vertical * Time.deltaTime;
-
+        
+        position = position + currentInput * speed * Time.deltaTime;
+        
         rigidbody2d.MovePosition(position);
     }
 
-    public void ChangeHP(int amount) 
+    // ===================== HEALTH ==================
+    public void ChangeHealth(int amount)
     {
         if (amount < 0)
-        {
-            animator.SetTrigger("Hit");
-
+        { 
             if (isInvincible)
                 return;
             
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            
+            animator.SetTrigger("Hit");
+            audioSource.PlayOneShot(hitSound);
 
-            GameObject hitEffectObject = Instantiate(HitEffect, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+            Instantiate(hitParticle, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         }
-
-        currentHP = Mathf.Clamp(currentHP + amount, 0, maxHP);
-        Debug.Log(currentHP + "/" + maxHP);
+        
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        
+        if(currentHealth == 0)
+            Respawn();
+        
+        UIHealthBar.Instance.SetValue(currentHealth / (float)maxHealth);
     }
-
-    void Launch()
+    
+    void Respawn()
+    {
+        ChangeHealth(maxHealth);
+        transform.position = respawnPosition.position;
+    }
+    
+    // =============== PROJECTICLE ========================
+    void LaunchProjectile()
     {
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
 
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
-
+        
         animator.SetTrigger("Launch");
+        audioSource.PlayOneShot(shootingSound);
+    }
+    
+    // =============== SOUND ==========================
+
+    //Allow to play a sound on the player sound source. used by Collectible
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

@@ -1,36 +1,36 @@
 fileFormatVersion: 2
-guid: 957383e82ad8601499ca4cac1dd1214a
+guid: 66fb840badda1cc4db2344d489c19b4f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8160936719798313024
-    second: FloorWaterRoundCorners_0
+      213: 21300000
+    second: FloorWaterRoundCorners0
   - first:
-      213: -1461658588064603524
-    second: FloorWaterRoundCorners_1
+      213: 21300002
+    second: FloorWaterRoundCorners1
   - first:
-      213: -187217663852998986
-    second: FloorWaterRoundCorners_2
+      213: 21300004
+    second: FloorWaterRoundCorners2
   - first:
-      213: -216212205376463626
-    second: FloorWaterRoundCorners_3
+      213: 21300006
+    second: FloorWaterRoundCorners3
   - first:
-      213: 5390282840649996488
-    second: FloorWaterRoundCorners_4
+      213: 21300008
+    second: FloorWaterRoundCorners4
   - first:
-      213: 1764941518268613943
-    second: FloorWaterRoundCorners_5
+      213: 21300010
+    second: FloorWaterRoundCorners5
   - first:
-      213: 409711093647374902
-    second: FloorWaterRoundCorners_6
+      213: 21300012
+    second: FloorWaterRoundCorners6
   - first:
-      213: -848561354300285403
-    second: FloorWaterRoundCorners_7
+      213: 21300014
+    second: FloorWaterRoundCorners7
   - first:
-      213: 8928097699067777432
-    second: FloorWaterRoundCorners_8
+      213: 21300016
+    second: FloorWaterRoundCorners8
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -50,7 +50,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -70,7 +69,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
@@ -85,12 +84,10 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
-  applyGammaDecoding: 1
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -99,10 +96,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -111,12 +107,11 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_0
+      name: FloorWaterRoundCorners0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,20 +119,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 040250a45b8714170800000000000000
-      internalID: 8160936719798313024
+      spriteID: dfd22c0a7de10034aaf6ae0eb69502c9
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_1
+      name: FloorWaterRoundCorners1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,20 +140,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c72a283224527bbe0800000000000000
-      internalID: -1461658588064603524
+      spriteID: f58bd716f7824114190d967788a62983
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_2
+      name: FloorWaterRoundCorners2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,20 +161,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6be0d52d68ed66df0800000000000000
-      internalID: -187217663852998986
+      spriteID: b63bba61538085846acd8e2bd675c365
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_3
+      name: FloorWaterRoundCorners3
       rect:
         serializedVersion: 2
         x: 0
@@ -187,20 +182,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fc9e6e052cdffcf0800000000000000
-      internalID: -216212205376463626
+      spriteID: cb18c82690ef868418897de57389ecf1
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_4
+      name: FloorWaterRoundCorners4
       rect:
         serializedVersion: 2
         x: 64
@@ -208,20 +203,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c893d34fa12eca40800000000000000
-      internalID: 5390282840649996488
+      spriteID: 81cf86ed2387d2e4d93548d71ea682f7
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_5
+      name: FloorWaterRoundCorners5
       rect:
         serializedVersion: 2
         x: 128
@@ -229,20 +224,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7354db5b5f45e7810800000000000000
-      internalID: 1764941518268613943
+      spriteID: 96e4ea08562a83e469caefcf928cb711
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_6
+      name: FloorWaterRoundCorners6
       rect:
         serializedVersion: 2
         x: 0
@@ -250,20 +245,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63a7365a1169fa500800000000000000
-      internalID: 409711093647374902
+      spriteID: a2159410d0358054fb933fc67cf3ddad
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_7
+      name: FloorWaterRoundCorners7
       rect:
         serializedVersion: 2
         x: 64
@@ -271,20 +266,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52e9ec2b1fd4934f0800000000000000
-      internalID: -848561354300285403
+      spriteID: a26f759bcf5fcdb41820d60f18019dea
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorWaterRoundCorners_8
+      name: FloorWaterRoundCorners8
       rect:
         serializedVersion: 2
         x: 128
@@ -292,14 +287,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 891dae0ed89f6eb70800000000000000
-      internalID: 8928097699067777432
+      spriteID: 84b0285e3c659f04b8ed60c0f0ee841f
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -307,7 +302,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6dfeae4d3a63a494fa0d84c42ad3ebb2
+    spriteID: 27ddfabe90e85114485541a17a5685d2
     internalID: 0
     vertices: []
     indices: 

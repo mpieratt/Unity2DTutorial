@@ -1,21 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class HealthCollectible : MonoBehaviour
+/// <summary>
+/// Will handle giving health to the character when they enter the trigger.
+/// </summary>
+public class HealthCollectible : MonoBehaviour 
 {
     void OnTriggerEnter2D(Collider2D other)
     {
-    RubyController controller = other.GetComponent<RubyController>();
+        RubyController controller = other.GetComponent<RubyController>();
 
-    if (controller != null)
-    {
-        if(controller.health < controller.maxHP)
+        if (controller != null)
         {
-            controller.ChangeHP(1);
+            controller.ChangeHealth(1);
             Destroy(gameObject);
         }
-        
-    }
     }
 }
